@@ -1,11 +1,11 @@
-public class Calistenicos{
+public class Calistenico{
     private String nombre;
     private boolean tieneEquipo;
     private int altura;
     private double peso;
     private int id;
     
-    public Calistenicos(int codigoDeIdentificacion, String nombre, int alturaEnCentimetros, double pesoEnKilos){
+    public Calistenico(int codigoDeIdentificacion, String nombre, int alturaEnCentimetros, double pesoEnKilos){
         id = codigoDeIdentificacion;
         this.nombre = nombre;
         altura = alturaEnCentimetros;
