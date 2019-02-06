@@ -113,5 +113,17 @@ public class CampeonatoTest
         campeona1.eliminarLosQueTenganMenosPeso(55);
         assertEquals("Daniels de id 1 con una altura de 186cm y un peso de 76.54Kg y tiene equipo.\nOswaldo de id 3 con una altura de 170cm y un peso de 58.0Kg y tiene equipo.\n", campeona1.informacionParticipantes());
     }
+    
+    //Test para el metodo 07
+    @Test
+    public void Test07()
+    {
+        Campeonato campeona1 = new Campeonato();
+        assertEquals("", campeona1.informacionParticipantes());
+        campeona1.anadirParticipante(1, "Daniels", 186, 76.54,true);
+        campeona1.anadirParticipante(2, "Larosa", 170, 54, false);
+        campeona1.anadirParticipante(3, "Oswaldo", 154, 54, true);
+        assertEquals("Oswaldo de id 3 con una altura de 154cm y un peso de 54.0Kg y tiene equipo.\nLarosa de id 2 con una altura de 170cm y un peso de 54.0Kg y no tiene equipo.\nDaniels de id 1 con una altura de 186cm y un peso de 76.54Kg y tiene equipo.\n", campeona1.participanteOrdenadorPorPesoYAltura());
+    }
 }
 

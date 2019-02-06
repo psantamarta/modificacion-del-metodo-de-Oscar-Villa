@@ -100,4 +100,40 @@ public class Campeonato{
             contador ++;
         }
     }
+    
+    //07. Metodo para ordenar por peso y en caso de coincidencia por altura.
+    public String participanteOrdenadorPorPesoYAltura(){
+        ArrayList<Calistenico> participantesOrdenar = new ArrayList();
+        for(Calistenico participante : listaParticipantes){
+                participantesOrdenar.add(participante);            
+        }
+        boolean completado = true;
+        String calistenicosPorAltura = "";
+        while(completado){
+            completado = false;
+            int contador = 0;
+            while(contador < participantesOrdenar.size() - 1){
+                if(participantesOrdenar.get(contador).getPeso() > participantesOrdenar.get(contador + 1).getPeso()){
+                    Calistenico guardada =participantesOrdenar.get(contador);
+                    participantesOrdenar.set(contador, participantesOrdenar.get(contador + 1));
+                    participantesOrdenar.set(contador + 1, guardada);
+                    completado = true;
+                }
+                if(participantesOrdenar.get(contador).getPeso() == participantesOrdenar.get(contador + 1).getPeso() &&
+                participantesOrdenar.get(contador).getAltura() > participantesOrdenar.get(contador + 1).getAltura()){
+                    Calistenico guardada =participantesOrdenar.get(contador);
+                    participantesOrdenar.set(contador, participantesOrdenar.get(contador + 1));
+                    participantesOrdenar.set(contador + 1, guardada);
+                    completado = true;
+                }
+                contador ++;
+            }
+        }
+
+        for(Calistenico participante : participantesOrdenar){
+            calistenicosPorAltura += participante.getTodaLaInformacion() + "\n";
+        }
+
+        return calistenicosPorAltura;
+    }
 }
