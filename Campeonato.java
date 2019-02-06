@@ -88,4 +88,16 @@ public class Campeonato{
             }
         }
     }
+    
+    //06.Metodo para eliminar participantes que tengan un peso inferior al indicado
+    public void eliminarLosQueTenganMenosPeso(int peso){
+        int contador = 0;
+        while(contador < listaParticipantes.size()){
+            if(listaParticipantes.get(contador).getPeso() <= peso){
+                listaParticipantes.remove(contador);
+                contador --;
+            }
+            contador ++;
+        }
+    }
 }
