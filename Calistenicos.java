@@ -36,4 +36,9 @@ public class Calistenicos{
     public void setPeso(double pesoEnKilos){
         peso = pesoEnKilos;
     }
+    
+    public String getTodaLaInformacion(){
+        String todaLainformacion = nombre + "de id " + id + " con una altura de " + altura + "cm " + "y un peso de " + peso + "Kg.";
+        return todaLainformacion;
+    }
 }
