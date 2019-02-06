@@ -41,6 +41,18 @@ public class CampeonatoTest
     }
 
 
+
+    @Test
+    public void Test01y02()
+    {
+        Campeonato campeona1 = new Campeonato();
+        assertEquals("", campeona1.informacionParticipantes());
+        campeona1.anadirParticipante(1, "Daniels", 186, 76.54);
+        assertEquals("Daniels de id 1 con una altura de 186cm y un peso de 76.54Kg.\n", campeona1.informacionParticipantes());
+        campeona1.anadirParticipante(2, "Larosa", 154, 54);
+        assertEquals("Daniels de id 1 con una altura de 186cm y un peso de 76.54Kg.\nLarosa de id 2 con una altura de 154cm y un peso de 54.0Kg.\n", campeona1.informacionParticipantes());
+    }
 }
+
 
 
