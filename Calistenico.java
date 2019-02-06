@@ -29,7 +29,7 @@ public class Calistenico{
         altura = alturaEnCentimetros;
     }
 
-    public double peso(){
+    public double getPeso(){
         return peso;
     }
 
@@ -47,5 +47,8 @@ public class Calistenico{
         }
         return todaLainformacion;
     }
-
+    
+    public int getId(){
+        return id;
+    }
 }

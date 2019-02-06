@@ -48,4 +48,44 @@ public class Campeonato{
 
         return calistenicosPorAltura;
     }
+
+    //04.Metodo para ordenar por peso siempre y cuando tengan un equipo e imprimir cada uno en una linea
+    public String participantesConEquipoOrdenadosPorPeso(){
+        ArrayList<Calistenico> participantesOrdenar = new ArrayList();
+        for(Calistenico participante : listaParticipantes){
+            if(participante.getTieneEquipo()){
+                participantesOrdenar.add(participante);
+            }
+        }
+        boolean completado = true;
+        String calistenicosPorAltura = "";
+        while(completado){
+            completado = false;
+            int contador = 0;
+            while(contador < participantesOrdenar.size() - 1){
+                if(participantesOrdenar.get(contador).getPeso() > participantesOrdenar.get(contador + 1).getPeso()){
+                    Calistenico guardada =participantesOrdenar.get(contador);
+                    participantesOrdenar.set(contador, participantesOrdenar.get(contador + 1));
+                    participantesOrdenar.set(contador + 1, guardada);
+                    completado = true;
+                }
+                contador ++;
+            }
+        }
+
+        for(Calistenico participante : participantesOrdenar){
+            calistenicosPorAltura += participante.getTodaLaInformacion() + "\n";
+        }
+
+        return calistenicosPorAltura;
+    }
+
+    //05. Metodo para modificar la altura 
+    public void modificarSiTieneEquipo(int numeroIdenficativo, boolean ahoraTieneEquipo){
+        for(Calistenico participante : listaParticipantes){
+            if(participante.getId() == numeroIdenficativo){
+                participante.setTieneEquipo(ahoraTieneEquipo);
+            }
+        }
+    }
 }
