@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 public class Campeonato{
     private Calistenico participante;
     private ArrayList<Calistenico> listaParticipantes;
@@ -94,13 +95,14 @@ public class Campeonato{
     
     //06.Metodo para eliminar participantes que tengan un peso inferior al indicado
     public void eliminarLosQueTenganMenosPeso(int peso){
-        int contador = 0;
-        while(contador < listaParticipantes.size()){
-            if(listaParticipantes.get(contador).getPeso() <= peso){
-                listaParticipantes.remove(contador);
-                contador --;
+        Iterator<Calistenico> tareasEliminar = listaParticipantes.iterator();
+        boolean tareasEliminadas = false;
+        while(tareasEliminar.hasNext()){
+            Calistenico tareaAUsar = tareasEliminar.next();
+            if(tareaAUsar.getPeso() < peso){
+                tareasEliminadas = true;
+                tareasEliminar.remove();
             }
-            contador ++;
         }
     }
     
