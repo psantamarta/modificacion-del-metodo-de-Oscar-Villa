@@ -2,13 +2,16 @@ import java.util.ArrayList;
 public class Campeonato{
     private Calistenico participante;
     private ArrayList<Calistenico> listaParticipantes;
+    private int contadorDeParticipantes;
     public Campeonato(){
         listaParticipantes  = new ArrayList<Calistenico>();
+        contadorDeParticipantes = 1;
     }
     //01.Es un metodo para poder añadir participantes
-    public void anadirParticipante(int codigoDeIdentificacion, String nombre, int alturaEnCentimetros, double pesoEnKilos, boolean tieneEquipo){
-        Calistenico nuevoParticipante = new Calistenico(codigoDeIdentificacion, nombre, alturaEnCentimetros, pesoEnKilos, tieneEquipo);
+    public void anadirParticipante(String nombre, int alturaEnCentimetros, double pesoEnKilos, boolean tieneEquipo){
+        Calistenico nuevoParticipante = new Calistenico(contadorDeParticipantes, nombre, alturaEnCentimetros, pesoEnKilos, tieneEquipo);
         listaParticipantes.add(nuevoParticipante);
+        contadorDeParticipantes ++;
     }
 
     //02.Es un metodo para obtener la informacion de los participantes cada uno en una linea
