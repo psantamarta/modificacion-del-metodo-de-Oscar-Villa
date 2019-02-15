@@ -32,19 +32,27 @@ public class Campeonato{
         }
         boolean completado = true;
         String calistenicosPorAltura = "";
-        while(completado){
-            completado = false;
-            int contador = 0;
-            while(contador < participantesOrdenar.size() - 1){
-                if(participantesOrdenar.get(contador).getAltura() > participantesOrdenar.get(contador + 1).getAltura()){
-                    Calistenico guardada =participantesOrdenar.get(contador);
-                    participantesOrdenar.set(contador, participantesOrdenar.get(contador + 1));
-                    participantesOrdenar.set(contador + 1, guardada);
-                    completado = true;
-                }
-                contador ++;
-            }
-        }
+        int contadorLento = 1;
+		while(contadorLento < participantesOrdenar.size()){
+			int posicionDeInsercion = contadorLento;
+			
+			int contadorRapido = contadorLento - 1;
+			while(contadorRapido >= 0){
+				int alturaContadorLento = participantesOrdenar.get(contadorLento).getAltura();
+				int alturaContadorRapido = participantesOrdenar.get(contadorRapido).getAltura();
+				if (alturaContadorLento <(alturaContadorRapido)) {
+					posicionDeInsercion = contadorRapido;
+				}
+				contadorRapido--;
+			}
+			if (posicionDeInsercion != contadorLento) {
+				Calistenico participanteAuxiliar = participantesOrdenar.get(contadorLento);
+				participantesOrdenar.remove(contadorLento);
+				participantesOrdenar.add(posicionDeInsercion, participanteAuxiliar);
+			}
+		
+			contadorLento++;
+		}
 
         for(Calistenico participante : participantesOrdenar){
             calistenicosPorAltura += participante.getTodaLaInformacion() + "\n";
@@ -92,7 +100,7 @@ public class Campeonato{
             }
         }
     }
-    
+
     //06.Metodo para eliminar participantes que tengan un peso inferior al indicado
     public void eliminarLosQueTenganMenosPeso(int peso){
         Iterator<Calistenico> tareasEliminar = listaParticipantes.iterator();
@@ -105,12 +113,12 @@ public class Campeonato{
             }
         }
     }
-    
+
     //07. Metodo para ordenar por peso y en caso de coincidencia por altura.
     public String participanteOrdenadorPorPesoYAltura(){
         ArrayList<Calistenico> participantesOrdenar = new ArrayList();
         for(Calistenico participante : listaParticipantes){
-                participantesOrdenar.add(participante);            
+            participantesOrdenar.add(participante);            
         }
         boolean completado = true;
         String calistenicosPorAltura = "";
